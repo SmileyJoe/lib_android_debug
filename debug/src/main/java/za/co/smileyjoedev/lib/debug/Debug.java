@@ -1,4 +1,4 @@
-package za.co.smileyjoedev.debug;
+package za.co.smileyjoedev.lib.debug;
 
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,12 +16,12 @@ import java.util.List;
 
 public class Debug {
 
-    private static final String TAG = "smileyjoedev.debug";
+    private static final String TAG = "smileyjoedev_debug";
 
     private static String LOG_NAME = "";
     private static final String LINE_BREAK = "\n";
     private static boolean ENABLED = true;
-    private static int[] LOG_TYPES;
+    private static ArrayList<Integer> TYPES = new ArrayList<Integer>();
 
     // Types //
     public static final int DEBUG = 1;
@@ -33,10 +34,12 @@ public class Debug {
 
     public static void init(Context context){
         try {
+            String keyTag = context.getString(R.string.lib_debug_meta_tag);
+            String keyEnabled = context.getString(R.string.lib_debug_meta_enabled);
             ApplicationInfo ai = context.getPackageManager().getApplicationInfo(context.getPackageName(), PackageManager.GET_META_DATA);
             Bundle bundle = ai.metaData;
-            LOG_NAME = bundle.getString("debug_tag");
-            ENABLED = bundle.getBoolean("debug_enabled");
+            LOG_NAME = bundle.getString(keyTag);
+            ENABLED = bundle.getBoolean(keyEnabled);
         } catch (PackageManager.NameNotFoundException e) {
             Log.e(TAG, context.getString(R.string.error_no_meta_tags, e.getMessage()));
         } catch (NullPointerException e) {
@@ -48,13 +51,13 @@ public class Debug {
         return ENABLED;
     }
 
-    public static void setLogTypes(int... logTypes) {
-        LOG_TYPES = logTypes;
+    public static void setTYPES(ArrayList<Integer> types) {
+        Debug.TYPES = types;
     }
 
     public static void d(Object... params) {
         if (Debug.isLogging(DEBUG)) {
-            Log.d(Debug.LOG_NAME, Helper.handleMessage(params));
+            Log.d(LOG_NAME, Helper.handleMessage(params));
         }
     }
 
@@ -86,15 +89,12 @@ public class Debug {
         boolean isLogging = false;
 
         if (ENABLED) {
-            if (LOG_TYPES == null || LOG_TYPES.length == 0) {
-                LOG_TYPES = new int[]{ALL};
+            if (TYPES.size() == 0) {
+                TYPES.add(ALL);
             }
-
-            List typeList = Arrays.asList(LOG_TYPES);
-
-            if (typeList.contains(type)) {
+            if (TYPES.contains(type)) {
                 isLogging = true;
-            } else if (typeList.contains(ALL)) {
+            } else if (TYPES.contains(ALL)) {
                 isLogging = true;
             }
         }

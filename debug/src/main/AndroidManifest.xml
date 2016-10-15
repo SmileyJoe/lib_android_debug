@@ -1,10 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="za.co.smileyjoedev.debug">
+          xmlns:tools="http://schemas.android.com/tools"
+          package="za.co.smileyjoedev.lib.debug">
 
     <application>
-
-        <meta-data android:name="debug_tag" android:value="debug" />
-        <meta-data android:name="debug_enabled" android:value="false" />
 
     </application>
 

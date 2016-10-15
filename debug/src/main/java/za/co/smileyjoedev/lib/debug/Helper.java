@@ -1,4 +1,4 @@
-package za.co.smileyjoedev.debug;
+package za.co.smileyjoedev.lib.debug;
 
 import java.util.ArrayList;
 import java.util.Arrays;

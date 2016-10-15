@@ -1,4 +1,4 @@
-package za.co.smileyjoedev.debug;
+package za.co.smileyjoedev.lib.debug;
 
 import org.junit.Test;
 
