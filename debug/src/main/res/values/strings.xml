@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Debug</string>
+
+    <string name="error_no_meta_tags">Failed to load meta-data: %s</string>
 </resources>
