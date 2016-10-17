@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 
 ext {
-    bintrayRepo = 'lib_develop'
+    bintrayRepo = 'lib_release'
     bintrayName = 'lib_android_debug'
 
     publishedGroupId = 'za.co.smileyjoedev.lib'
@@ -13,8 +13,8 @@ ext {
     siteUrl = 'https://github.com/SmileyJoe/lib_android_debug'
     gitUrl = 'https://github.com/SmileyJoe/lib_android_debug.git'
 
-    libraryVersion = '0.1.1'
-    libraryVersionCode = 5
+    libraryVersion = '1.0.0'
+    libraryVersionCode = 9
 
     developerId = 'SmileyJoe'
     developerName = 'Cody Strugnell'

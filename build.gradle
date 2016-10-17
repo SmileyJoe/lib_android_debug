@@ -17,7 +17,7 @@ allprojects {
     repositories {
         jcenter()
         maven {
-            url  "http://dl.bintray.com/smileyjoe/lib_develop"
+            url  "http://dl.bintray.com/smileyjoe/lib_release"
         }
     }
 }
