@@ -1,5 +1,29 @@
 apply plugin: 'com.android.library'
 
+ext {
+    bintrayRepo = 'lib_release'
+    bintrayName = 'lib_android_debug'
+
+    publishedGroupId = 'za.co.smileyjoedev.lib'
+    libraryName = 'lib_android_debug'
+    artifact = 'debug'
+
+    libraryDescription = 'Wrapper library for logcat'
+
+    siteUrl = 'https://github.com/SmileyJoe/lib_android_debug'
+    gitUrl = 'https://github.com/SmileyJoe/lib_android_debug.git'
+
+    libraryVersion = '1.0.0'
+    libraryVersionCode = 9
+
+    developerId = 'SmileyJoe'
+    developerName = 'Cody Strugnell'
+
+    licenseName = 'The MIT License (MIT)'
+    licenseUrl = 'https://opensource.org/licenses/MIT'
+    allLicenses = ["MIT"]
+}
+
 android {
     compileSdkVersion 24
     buildToolsVersion "24.0.2"
@@ -7,8 +31,8 @@ android {
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 24
-        versionCode 1
-        versionName "1.0"
+        versionCode libraryVersionCode
+        versionName libraryVersion
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -29,3 +53,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:24.2.1'
     testCompile 'junit:junit:4.12'
 }
+
+apply from: 'https://raw.githubusercontent.com/SmileyJoe/lib_android_bintray/master/install_v1.gradle'
+apply from: 'https://raw.githubusercontent.com/SmileyJoe/lib_android_bintray/master/bintray_v1.gradle'

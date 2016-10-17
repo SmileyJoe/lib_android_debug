@@ -1,4 +1,4 @@
-package za.co.smileyjoedev.debug;
+package za.co.smileyjoedev.lib.debug;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("za.co.smileyjoedev.debug.test", appContext.getPackageName());
+        assertEquals("za.co.smileyjoedev.lib.debug", appContext.getPackageName());
     }
 }
